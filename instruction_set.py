@@ -216,8 +216,7 @@ def convert(instruction: str):
         case 'cmp':
             return f'000010{register(args[2])}{register(args[1])}'
         case 'mul':
-            raise NotImplementedError(
-                args[0], "structure exist, timing not implemented")
+            raise NotImplementedError(args[0])
             return f'000011{register(args[2])}{register(args[1])}'
         case 'cmd':
             return f'0000010{register(args[1])}'
@@ -234,6 +233,7 @@ def convert(instruction: str):
         case 'hlt':
             return f'00000000'
         case 'brn':
+            raise NotImplementedError(args[0])
             return f'0100{branch(args[1])}'
         case 'scs':
             return f'010100{skip(args[1])}'
