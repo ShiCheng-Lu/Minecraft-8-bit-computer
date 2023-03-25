@@ -155,8 +155,6 @@ def register(register: str):
 
 def branch(lines: str):
     lines_int = int(lines)
-    # convert to base 2 negative recipricol
-    # TODO: implement
     return number(16 + lines_int, 4)
 
 
@@ -233,18 +231,17 @@ def convert(instruction: str):
         case 'hlt':
             return f'00000000'
         case 'brn':
-            raise NotImplementedError(args[0])
-            return f'0100{branch(args[1])}'
+            return f'0111{branch(args[1])}'
         case 'scs':
-            return f'010100{skip(args[1])}'
+            return f'011000{skip(args[1])}'
         case 'scc':
-            return f'010101{skip(args[1])}'
+            return f'011001{skip(args[1])}'
         case 'szs':
-            return f'010110{skip(args[1])}'
+            return f'011010{skip(args[1])}'
         case 'szc':
-            return f'010111{skip(args[1])}'
+            return f'011011{skip(args[1])}'
         case 'li':
-            return f'011{number(args[2], 4)}{register(args[1])}'
+            return f'010{number(args[2], 4)}{register(args[1])}'
         case 'jmp':
             return f'10{number(args[1], 6)}'
         case 'ldr':
