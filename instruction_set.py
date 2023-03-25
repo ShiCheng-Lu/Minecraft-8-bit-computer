@@ -132,7 +132,7 @@ ldr $0 10    # check if this is the n-th
 dec $0      #
 szs 2       #
 str $0 10    #
-jmp 5       #
+brn -9       # jmp 5 or brn -9
 ldr $0 8    #
 ldr $1 8    #
 hlt         #
@@ -155,13 +155,15 @@ def register(register: str):
 
 def branch(lines: str):
     lines_int = int(lines)
+    if lines_int < -16 or lines_int >= 0:
+        raise ValueError("branch amount must be -16 <= x < 0")
     return number(16 + lines_int, 4)
 
 
 def skip(lines: str):
     lines_int = int(lines)
     if lines_int >= 4:
-        raise ValueError("skip amount must be < 4")
+        raise ValueError("skip amount must be 0 <= x < 4")
     return format(lines_int, 'b')
 
 
