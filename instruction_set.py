@@ -38,14 +38,19 @@ opcodes field:
 0000  wait  sd = 01  wait for interrupt
 0000  hlt   sd = 00  halt
 
-0 1 0 0 n n n n
+0 1 0 n n n n d
+
+load immediate to register r (0 or 1) signed value nnnn
++15 to -16
+
+0 1 1 1 n n n n
 
 brn - unconditional branch negative -n bytes (up to -16),
 used for branching back at end of a short loop after a skip
 instruction
 (program pointer += 1 n n n n)
 
-0 1 0 1 b b i i
+0 1 1 0 b b i i
 
 skip instructions, where
     b b is type of branch
@@ -58,11 +63,6 @@ b b field:
 01  scc skip i bytes if carry clear
 10  szs skip i bytes if zero bit set
 11  szc skip i bytes if zero bit clear
-
-0 1 1 n n n n d
-
-load immediate to register r (0 or 1) signed value nnnn
-+15 to -16
 
 1 0 a a a a a a
 
