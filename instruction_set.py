@@ -138,8 +138,21 @@ ldr $1 8    #
 hlt         #
 '''
 
-program = '''
-
+program = ''' # sum of first 7 numbers
+li $0 7
+str $0 0
+li $0 0
+li $1 0
+inc $1
+add $0 $1
+str $0 1
+ldr $0 0
+cmp $0 $1
+szs 2
+ldr $0 1
+brn -7
+ldr $0 1
+hlt
 '''
 
 
@@ -164,7 +177,7 @@ def skip(lines: str):
     lines_int = int(lines)
     if lines_int >= 4:
         raise ValueError("skip amount must be 0 <= x < 4")
-    return format(lines_int, 'b')
+    return number(lines_int, 2)
 
 
 def number(num: str, digits: int):
@@ -286,6 +299,6 @@ def to_redstone_shape(program: str, debug=False):
 
 
 if __name__ == "__main__":
-    to_redstone_shape(fib_program)
+    to_redstone_shape(program)
     print('')
-    print(convert_program(fib_program, debug=True))
+    print(convert_program(program, debug=True))

@@ -58,7 +58,7 @@ def main():
                 dx *= -1
                 dz *= -1
 
-            data = convert_program(fib_program.strip())
+            data = convert_program(program.strip())
             data = ''.join(filter(lambda x: x == '0' or x == '1', data))
             
             for idx, section in enumerate(wrap(data, 8 * 16)):
