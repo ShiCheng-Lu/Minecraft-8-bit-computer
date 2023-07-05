@@ -234,8 +234,10 @@ def convert(instruction: str):
         case 'cmd':
             return f'0000010{register(args[1])}'
         case 'sec':
+            raise NotImplementedError(args[0])
             return f'00000111'
         case 'clc':
+            raise NotImplementedError(args[0])
             return f'00000110'
         case 'call':
             return f'00000011'

@@ -45,7 +45,7 @@ def write_section(data, dx, dz):
         write_byte(byte, dx + idx * 2 * dx, 1, dz + idx * 2 * dz)
 
 
-def main():
+def auto_program(program: str):
     while True:
         keyboard.wait('/')
         parse = keyboard.get_typed_strings(keyboard.record('enter'))
@@ -73,4 +73,4 @@ def main():
                 write_section(section, dx, dz)
 
 if __name__ == "__main__":
-    main()
+    auto_program()
