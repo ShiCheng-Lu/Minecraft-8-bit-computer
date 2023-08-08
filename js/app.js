@@ -48,7 +48,7 @@ function createControls() {
 
 function createLights() {
    const hemisphereLight = new THREE.HemisphereLight(0xddeeff, 0x202020, 3.0);
-   scene.add(hemisphereLight, mainLight);
+   scene.add(hemisphereLight);
 }
 
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
