@@ -87,17 +87,20 @@ def step(instruction: str):
         case 'not':
             set_reg(args[1], ~ get_reg(args[2]))
         case 'asr':
-            set_reg(args[1], get_reg(args[1]) >> 1)
+            value = get_reg(args[1])
+            if value >= 0b10000000:
+                value += 0b100000000
+            set_reg(args[1], value >> 1)
         case 'asl':
             set_reg(args[1], get_reg(args[1]) << 1)
         case 'ror':
-            carry = reg[REG_CARRY]
-            reg[REG_CARRY] = (get_reg(args[1]) & 1)
-            set_reg(args[1], get_reg(args[1]) >> 1 + carry << 7)
+            value = get_reg(args[1])
+            set_reg(args[1], (value >> 1) + ((value & 1) << 7))
+            reg[REG_CARRY] = (value & 1)
         case 'rol':
             carry = reg[REG_CARRY]
-            reg[REG_CARRY] = (get_reg(args[1]) >= (1 << 7))
             set_reg(args[1], get_reg(args[1]) << 1 + carry)
+            reg[REG_CARRY] = (get_reg(args[1]) >= (1 << 7))
         case 'inc':
             set_reg(args[1], get_reg(args[1]) + 1)
         case 'dec':
@@ -147,7 +150,10 @@ def step(instruction: str):
             if not reg[REG_ZERO]:
                 pc += int(args[1])
         case 'li':
-            set_reg(args[1], args[2])
+            value = int(args[2])
+            if value >= 0b1000: # pad front with 1 if the first digit is 1
+                value += 0b11110000
+            set_reg(args[1], value)
         case 'jmp':
             pc = int(args[1]) - 1
         case 'call':

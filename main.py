@@ -4,12 +4,15 @@ from instruction_set import *
 
 # multiply two number
 program = '''
-li $0 5
-li $1 7
-cmb $1
+li $1 14
+li $0 14
+mul $0 $1
 hlt
 '''
 
 if __name__ == "__main__":
-    auto_program(program)
-    # sim(program)
+    # auto_program(program)
+    sim(program)
+    # print(bin(int("1111111", base=2) * int("11111111", base=2)))
+
+    pass

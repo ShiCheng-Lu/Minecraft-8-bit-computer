@@ -29,10 +29,11 @@ opcodes field:
 0111  inp   s = 0    input to reg d from input port
 0111  out   s = 1   output from reg d to output port
 0010  cmp   d - s    (no store)
-0011  mul   d/s = s * d  (high byte of result into d, low byte into 1-d)
-0001  cmb   s = 0    combine d = d | (1-d) << 4 li full 8 bit
-0001  sec   sd = 11  set carry
-0001  clc   sd = 10  clear carry
+0011  cmb   s = 0    combine d = d | (1-d) << 4 li full 8 bit
+0011  sec   sd = 11  set carry
+0011  clc   sd = 10  clear carry
+0001  mul   s/d = s * d  (high byte of result into d, low byte into 1-d)
+
 0000  call  sd = 11  save pc + 1 to stack (before jmp for call)
 0000  ret   sd = 10  return from subroutine
 0000  wait  sd = 01  wait for interrupt
@@ -86,8 +87,8 @@ instructions = {
     "or":   "00.1101.s.d",
     "xor":  "00.1110.s.d",
     "not":  "00.1111.s.d",
-    "sar":  "00.0100.0.d",
-    "sal":  "00.0100.1.d",
+    "asr":  "00.0100.0.d",
+    "asl":  "00.0100.1.d",
     "ror":  "00.0101.0.d",
     "rol":  "00.0101.1.d",
     "inc":  "00.0110.0.d",
@@ -105,13 +106,13 @@ instructions = {
     "wait": "00.0000.01",
     "hlt":  "00.0000.00",
 
-    "brn":  "0100.nnnn",
-    "bic":  "0101.00.nn",
-    "bnc":  "0101.01.nn",
-    "biz":  "0101.10.nn",
-    "bnz":  "0101.11.nn",
+    "brn":  "0110.nnnn",
+    "bic":  "0111.00.nn",
+    "bnc":  "0111.01.nn",
+    "biz":  "0111.10.nn",
+    "bnz":  "0111.11.nn",
 
-    "li":   "011.nnnn.d",
+    "li":   "010.nnnn.d",
     "jmp":  "10.nnnnnn",
     "ldr":  "110.nnnn.d",
     "str":  "111.nnnn.d",
@@ -233,15 +234,15 @@ def convert(instruction: str):
         case 'cmp':
             return f'000010{register(args[2])}{register(args[1])}'
         case 'mul':
-            return f'000011{register(args[2])}{register(args[1])}'
+            return f'000001{register(args[2])}{register(args[1])}'
         case 'cmb':
-            return f'0000010{register(args[1])}'
+            return f'0000110{register(args[1])}'
         case 'sec':
             raise NotImplementedError(args[0])
-            return f'00000111'
+            return f'00001111'
         case 'clc':
             raise NotImplementedError(args[0])
-            return f'00000110'
+            return f'00001110'
         case 'call':
             return f'00000011'
         case 'ret':
