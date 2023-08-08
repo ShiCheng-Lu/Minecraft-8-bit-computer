@@ -112,13 +112,13 @@ function loadParrot(){
 
       model.position.copy( position );
 
-      const animation = gltfResult.animations[ 0 ];
+      // const animation = gltfResult.animations[ 0 ];
 
-      const mixer = new THREE.AnimationMixer( model );
-      mixers.push( mixer );
+      // const mixer = new THREE.AnimationMixer( model );
+      // mixers.push( mixer );
 
-      const action = mixer.clipAction( animation );
-      action.play();
+      // const action = mixer.clipAction( animation );
+      // action.play();
 
       scene.add( model );
       models.push( model );
