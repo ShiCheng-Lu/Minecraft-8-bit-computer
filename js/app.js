@@ -47,9 +47,7 @@ function createControls() {
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 function createLights() {
-   const hemisphereLight = new THREE.HemisphereLight(0xddeeff, 0x202020, 5.0);
-   const mainLight = new THREE.DirectionalLight(0xFFFFFF, 5.0);
-   mainLight.position.set(10, 10, 10);
+   const hemisphereLight = new THREE.HemisphereLight(0xddeeff, 0x202020, 3.0);
    scene.add(hemisphereLight, mainLight);
 }
 
