@@ -5,7 +5,7 @@ let controls;
 let renderer;
 let scene;
 let model;
-let dragControls;
+// let dragControls;
 let models = [];
 
 // let myFilePath;
@@ -43,7 +43,7 @@ function createCamera() {
 function createControls() {
    controls = new THREE.OrbitControls(camera, container);
 
-   dragControls = new THREE.DragControls(camera, container);
+   // dragControls = new THREE.DragControls(camera, container);
    // dragControls.addEventListener('dragstart', function (event) {
    //    console.log('drag start');
    //    controls.enabled = false;
