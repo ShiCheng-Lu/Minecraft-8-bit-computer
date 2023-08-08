@@ -6,9 +6,10 @@ from instruction_set import *
 program = '''
 li $0 5
 li $1 7
-mul $0 $1
+cmb $1
 hlt
 '''
 
 if __name__ == "__main__":
     auto_program(program)
+    # sim(program)

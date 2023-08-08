@@ -11,11 +11,22 @@ ram = [0] * 16
 pc = 0
 
 def get_reg(register: str):
+    '''
+    get the register value:
+    - `$0` or `~$1`: register 0
+    - `$1` or `~$0`: register 1
+    - `ZERO`: zero flag
+    - `CARRY`: carry flag
+    '''
     match register:
         case '$0':
             return reg[0]
         case '$1':
             return reg[1]
+        case '~$0':
+            return reg[1]
+        case '~$1':
+            return reg[0]
         case 'ZERO':
             return reg[REG_ZERO]
         case 'CARRY':
@@ -41,7 +52,11 @@ def set_reg(register: str, value: str):
     match register:
         case '$0':
             reg[0] = value
+        case '~$1':
+            reg[0] = value
         case '$1':
+            reg[1] = value
+        case '~$0':
             reg[1] = value
         case _:
             raise ValueError(f"invalid register: {register}")
@@ -103,9 +118,12 @@ def step(instruction: str):
             return f'0011011{register(args[1])}'
         case 'mul':
             res = get_reg(args[1]) * get_reg(args[2])
-            set_reg(args[1], )
-            set_reg(args[1], )
+            set_reg(args[1], res % 0x100)
+            set_reg('~'+args[1], res // 0x100)
             reg[REG_ZERO] = (res == 0)
+        case 'cmb':
+            res = get_reg(args[1]) * 16 + get_reg('~'+args[1])
+            set_reg(args[1], res)
         case 'sec':
             reg[REG_CARRY] = 1
         case 'clc':

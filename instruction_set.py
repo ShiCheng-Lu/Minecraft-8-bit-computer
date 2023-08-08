@@ -234,7 +234,7 @@ def convert(instruction: str):
             return f'000010{register(args[2])}{register(args[1])}'
         case 'mul':
             return f'000011{register(args[2])}{register(args[1])}'
-        case 'cmd':
+        case 'cmb':
             return f'0000010{register(args[1])}'
         case 'sec':
             raise NotImplementedError(args[0])
