@@ -46,6 +46,16 @@ def write_section(data, dx, dz):
 
 
 def auto_program(program: str):
+    '''
+    automatically write a program into redstone memory:
+    after call, in Minecraft:
+    /program [dir]
+    - dir:
+        - x if facing x (moving forward increase x)
+        - -x if facing -x (moving forward decrease x)
+        - z if facing z (moving forward increase z)
+        - -z if facing -z (moving forward decrease y)
+    '''
     while True:
         keyboard.wait('/')
         parse = keyboard.get_typed_strings(keyboard.record('enter'))

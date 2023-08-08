@@ -181,6 +181,10 @@ def skip(lines: str):
 
 
 def number(num: str, digits: int):
+    '''
+    convert a string to a number
+    - digits: max number of digits for the number (base 2)
+    '''
     num_int = int(num)
     if num_int >= (2 ** digits):
         raise ValueError(f"value must be < {(2 ** digits)}")
@@ -229,7 +233,6 @@ def convert(instruction: str):
         case 'cmp':
             return f'000010{register(args[2])}{register(args[1])}'
         case 'mul':
-            raise NotImplementedError(args[0])
             return f'000011{register(args[2])}{register(args[1])}'
         case 'cmd':
             return f'0000010{register(args[1])}'
