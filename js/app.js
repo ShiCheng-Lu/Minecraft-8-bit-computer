@@ -24,7 +24,7 @@ function init(){
       loadModels();
       console.log('called');
    }
-   loadParrot();
+   loadComputer();
    createLights();
    createRenderer();
 
@@ -104,7 +104,7 @@ function loadModels(){
 }
 
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-function loadParrot(){
+function loadComputer(){
    const loader = new THREE.GLTFLoader();
 
    const onLoad = ( gltfResult, position ) => {
@@ -131,7 +131,7 @@ function loadParrot(){
    const myFilePath = document.getElementById("myFilePath").value;
 
    const parrotPosition = new THREE.Vector3( 0, 0, 0);
-   loader.load( 'models/Parrot.glb' , gltfResult => onLoad( gltfResult, parrotPosition ), onProgress, onError );
+   loader.load( 'models/computer.glb' , gltfResult => onLoad( gltfResult, parrotPosition ), onProgress, onError );
 }
 
 
