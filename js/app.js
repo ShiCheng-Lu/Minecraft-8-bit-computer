@@ -24,7 +24,7 @@ function init(){
       loadModels();
       console.log('called');
    }
-   loadComputer();
+   loadParrot();
    createLights();
    createRenderer();
 
@@ -104,7 +104,7 @@ function loadModels(){
 }
 
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-function loadComputer(){
+function loadParrot(){
    const loader = new THREE.GLTFLoader();
 
    const onLoad = ( gltfResult, position ) => {
