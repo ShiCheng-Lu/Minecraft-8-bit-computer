@@ -37,24 +37,24 @@ function createScene() {
 }
 function createCamera() {
    camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, 1, 3000);
-   // camera.position.set( -1.5, 1.5, 6.5);
-   camera.position.set(0, 0, 300);
+   camera.position.set( 50, 100, 100);
+   // camera.position.set(0, 0, 300);
 }
 function createControls() {
    controls = new THREE.OrbitControls(camera, container);
 
    dragControls = new THREE.DragControls(camera, container);
-   dragControls.addEventListener('dragstart', function (event) {
-      console.log('drag start');
-      controls.enabled = false;
-   });
-   dragControls.addEventListener('drag', function (event) {
-      console.log('drag');
-   });
-   dragControls.addEventListener('dragend', function (event) {
-      console.log('drag end');
-      controls.enabled = true;
-   });
+   // dragControls.addEventListener('dragstart', function (event) {
+   //    console.log('drag start');
+   //    controls.enabled = false;
+   // });
+   // dragControls.addEventListener('drag', function (event) {
+   //    console.log('drag');
+   // });
+   // dragControls.addEventListener('dragend', function (event) {
+   //    console.log('drag end');
+   //    controls.enabled = true;
+   // });
 }
 
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
