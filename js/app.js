@@ -37,7 +37,7 @@ function createScene() {
 }
 function createCamera() {
    camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, 1, 3000);
-   camera.position.set( 50, 100, 100);
+   camera.position.set(50, 100, 100);
    // camera.position.set(0, 0, 300);
 }
 function createControls() {
@@ -68,14 +68,14 @@ function loadModel() {
    //
    const onError = (errorMessage) => { console.log(errorMessage); };
 
-   const parrotPosition = new THREE.Vector3(0, 0, 0);
-   loader.load('computer.glb', gltfResult => onLoad(gltfResult, parrotPosition), onProgress, onError);
+   const position = new THREE.Vector3(0, 0, 0);
+   loader.load('computer.glb', gltfResult => onLoad(gltfResult, position), onProgress, onError);
 }
 
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 function createRenderer() {
-   renderer = new THREE.WebGLRenderer({ antialias: true, container });
+   renderer = new THREE.WebGLRenderer({ antialias: true, container, alpha: true });
    renderer.setSize(container.clientWidth, container.clientHeight);
    renderer.setPixelRatio(window.devicePixelRatio);
    container.appendChild(renderer.domElement);
