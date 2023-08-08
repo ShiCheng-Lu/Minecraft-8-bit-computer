@@ -20,17 +20,12 @@ function init(){
    createScene();
    createCamera();
    createControls();
-   function filePassed(){
-      loadModels();
-      console.log('called');
-   }
-   loadParrot();
+   loadModel();
    createLights();
    createRenderer();
 
    // setAnimationLoop() method for WebXR
    renderer.setAnimationLoop(() => {
-      update();
       render();
    });
    // /
@@ -72,53 +67,13 @@ function createLights(){
 }
 
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-
-function loadModels(){
+function loadModel(){
    const loader = new THREE.GLTFLoader();
 
    const onLoad = ( gltfResult, position ) => {
       model = gltfResult.scene.children[ 0 ];
 
       model.position.copy( position );
-
-      // const animation = gltfResult.animations[ 0 ];
-
-      // const mixer = new THREE.AnimationMixer( model );
-      // mixers.push( mixer );
-
-      // const action = mixer.clipAction( animation );
-      // action.play();
-
-      scene.add( model );
-      models.push( model );
-   };
-
-   const onProgress = () => { console.log( 'Models are on the way...' ); };
-   //
-   const onError = ( errorMessage ) => { console.log( errorMessage ); };
-
-   const myFilePath = document.getElementById("myFilePath").value;
-   
-   const someOnesPosition = new THREE.Vector3( 0, 30, 0);
-   loader.load( myFilePath , gltfResult => onLoad( gltfResult, someOnesPosition ), onProgress, onError );
-}
-
-// _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-function loadParrot(){
-   const loader = new THREE.GLTFLoader();
-
-   const onLoad = ( gltfResult, position ) => {
-      model = gltfResult.scene.children[ 0 ];
-
-      model.position.copy( position );
-
-      // const animation = gltfResult.animations[ 0 ];
-
-      // const mixer = new THREE.AnimationMixer( model );
-      // mixers.push( mixer );
-
-      // const action = mixer.clipAction( animation );
-      // action.play();
 
       scene.add( model );
       models.push( model );
@@ -131,7 +86,7 @@ function loadParrot(){
    const myFilePath = document.getElementById("myFilePath").value;
 
    const parrotPosition = new THREE.Vector3( 0, 0, 0);
-   loader.load( 'models/Parrot.glb' , gltfResult => onLoad( gltfResult, parrotPosition ), onProgress, onError );
+   loader.load( 'computer.glb' , gltfResult => onLoad( gltfResult, parrotPosition ), onProgress, onError );
 }
 
 
@@ -142,17 +97,6 @@ function createRenderer(){
    renderer.setSize( container.clientWidth, container.clientHeight);
    renderer.setPixelRatio( window.devicePixelRatio);
    container.appendChild( renderer.domElement);
-}
-//
-function update(){
-
-   const delta = clock.getDelta();
-   for(const mixer of mixers){
-      mixer.update( 0.03 );
-   }
-
-   // camera.rotation.x += 0.001;
-   // camera.rotation.y += 0.001;
 }
 
 function render(){
@@ -168,10 +112,5 @@ function onWindowResize(){
    renderer.setSize( container.clientWidth, container.clientHeight);
 }
 window.addEventListener( 'resize', onWindowResize);
-
-function filePassed(){
-   loadModels();
-   console.log('called');
-}
 
 init();
