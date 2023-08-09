@@ -7,6 +7,6 @@ Current bugs:
 
 [3D model of computer](https://shicheng-lu.github.io/Minecraft-8-bit-computer/)
 
-[Minecraft Structure](./computer.mcstructure)
+[Minecraft Structure](https://github.com/ShiCheng-Lu/Minecraft-8-bit-computer/raw/main/computer.mcstructure)
 
-[Minecraft World](./8-bit%20computer.mcworld)
+[Minecraft World](https://github.com/ShiCheng-Lu/Minecraft-8-bit-computer/raw/main/8-bit%20computer.mcworld)
