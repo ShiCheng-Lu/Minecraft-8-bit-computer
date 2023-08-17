@@ -62,7 +62,12 @@ def auto_program(program: str):
         parse = keyboard.get_typed_strings(keyboard.record('enter'))
 
         args = next(parse).split(' ')
+
         if args[0] == "program":
+            
+            if len(args) < 2:
+                args.append("-x")
+
             dx = 1 if ('x' in args[1]) else 0
             dz = 1 if ('z' in args[1]) else 0
             if ('-' in args[1]):

@@ -120,7 +120,7 @@ instructions = {
 
 fib_program = '''
 li $0 3     #
-str $0 10    #
+str $0 10   #
 li $0 1     #
 str $0 8    #
 str $0 9    #
@@ -129,11 +129,11 @@ ldr $1 8    #
 add $0 $1   #
 str $0 8    #
 str $1 9    #
-ldr $0 10    # check if this is the n-th
+ldr $0 10   # check if this is the n-th
 dec $0      #
 szs 2       #
-str $0 10    #
-brn -9       # jmp 5 or brn -9
+str $0 10   #  
+brn -9      # jmp 5 or brn -9
 ldr $0 8    #
 ldr $1 8    #
 hlt         #

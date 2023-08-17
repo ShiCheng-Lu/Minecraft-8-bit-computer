@@ -136,7 +136,7 @@ def step(instruction: str):
         case 'hlt':
             pc *= -1
         case 'brn':
-            pc += args[1]
+            pc += int(args[1])
         case 'scs':
             if reg[REG_CARRY]:
                 pc += int(args[1])

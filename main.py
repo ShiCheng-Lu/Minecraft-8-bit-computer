@@ -15,7 +15,7 @@ hlt
 
 if __name__ == "__main__":
     auto_program(instruction_set.fib_program)
-    # sim(program)
+    # sim(instruction_set.fib_program, step_by_step=True)
     # print(bin(int("1111111", base=2) * int("11111111", base=2)))
 
     pass
